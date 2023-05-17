@@ -1,4 +1,4 @@
-### Hi there 👋
+### The source code and data will be made public after the paper is accepted. 👋
 
 <!--
 **LineFlowDP/LineFlowDP** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
