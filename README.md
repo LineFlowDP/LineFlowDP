@@ -1,4 +1,4 @@
-### The source code and data will be made public after the paper is accepted. 👋
+### This is a repository for [LineFlowDP: A Deep Learning-Based Two-Phase Approach for Line-Level Defect Prediction.] 👋
 
 <!--
 **LineFlowDP/LineFlowDP** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
