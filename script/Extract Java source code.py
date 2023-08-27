@@ -1,0 +1,40 @@
+from my_util import *
+import os
+
+used_file_path = '../datasets/preprocessed_data/'
+source_code_path = '../sourcecode/'
+
+
+def readData(path, file):
+    data = pd.read_csv(path + file, encoding='latin', keep_default_na=False)
+    return data
+
+
+def get_java_code(project, release):
+    # 读取数据
+    data = readData(used_file_path, release + '.csv')
+    java_files = data.drop_duplicates('filename', keep='last')
+    java_files = list(java_files['filename'])
+    for java_file in java_files:
+        code = ''
+        java_df = data[data['filename'] == java_file]
+        for index in java_df.index:
+            code = code + str(java_df.loc[index, 'code_line']) + '\n'
+        file_name = str(java_df.loc[index, 'filename'])
+        folder = (source_code_path + project + '/' + release + '/' + file_name).replace('.java', '')
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+        with open(source_code_path + project + '/' + release + '/' + file_name, 'w', encoding='utf-8') as f:
+            f.write(code.strip())
+            f.close()
+
+
+def main():
+    for project in all_releases.keys():
+        for release in all_releases[project]:
+            get_java_code(project=project, release=release)
+            print('-' * 50, release, '_done', '-' * 50)
+
+
+if __name__ == '__main__':
+    main()

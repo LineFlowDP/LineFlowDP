@@ -1,7 +1,7 @@
 
 # This is a repository for "LineFlowDP: A Deep Learning-Based Two-Phase Approach for Line-Level Defect Prediction"
   
-Preparation of "README.md" file referenced from DeepLineDP[github](https://github.com/awsm-research/DeepLineDP), Thanks!🥰🥰🥰
+Preparation of "README.md" file referenced from DeepLineDP at this [github](https://github.com/awsm-research/DeepLineDP), Thanks!🥰🥰🥰
 
   
 ## Environment Configuration
@@ -27,5 +27,20 @@ For each software project, we use the oldest release to train LineFlowDP models.
 
 For example, there are 5 releases in ActiveMQ (e.g., R1, R2, R3, R4, R5), R1 is used as training set, R2 is used as validation set, and R3 - R5 are used as test sets.
 
+
 ## Data Prepation
+
+### Data Preprocess
+
+Put the downloaded dataset into "datasets/original/" folder, then run "preprocess_data.py" to get the preprocessed data, the preprocessed data will be stored in "datasets/preprocessed_data/" folder.
+
+### Getting Java Source Files
+
+Run the "Extract Java source code.py" file to get the Java source code in csv files, the Java source code will be saved in the "sourcecode/" folder.
+
+### Extracting Program Dependency Graphs
+
+We use the PropertyGraph tool to extract program dependency graphs (PDG) in this repository  [github](https://github.com/Zanbrachrissik/PropertyGraph), Thanks to them for providing such a handy tool!
+
+Then put the PDG file in the "sourcecode/[PROJECT]/[VERSION]/PDG" folder, such as "sourcecode/activemq/activemq-5.0.0/PDG".
 
