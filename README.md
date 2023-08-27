@@ -32,11 +32,11 @@ For example, there are 5 releases in ActiveMQ (e.g., R1, R2, R3, R4, R5), R1 is 
 
 ### Data Preprocess
 
-Put the downloaded dataset into `datasets/original/` folder, then run `"preprocess_data.py"` to get the preprocessed data, the preprocessed data will be stored in `datasets/preprocessed_data/` folder.
+Put the downloaded dataset into `datasets/original/` folder, then run **"preprocess_data.py"** to get the preprocessed data, the preprocessed data will be stored in `datasets/preprocessed_data/` folder.
 
 ### Getting Java Source Files
 
-Run the `"Extract Java source code.py"` file to get the Java source code in csv files, the Java source code will be saved in the `sourcecode/` folder.
+Run the **"Extract Java source code.py"** file to get the Java source code in csv files, the Java source code will be saved in the `sourcecode/` folder.
 
 ### Extracting Program Dependency Graphs
 
