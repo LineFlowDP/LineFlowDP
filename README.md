@@ -42,5 +42,5 @@ Run the **"Extract Java source code.py"** file to get the Java source code in cs
 
 We use the PropertyGraph tool to extract program dependency graphs (PDG) in this repository  [github](https://github.com/Zanbrachrissik/PropertyGraph), Thanks to them for providing such a handy tool!
 
-Then put the PDG file in the `sourcecode/[PROJECT]/[VERSION]/PDG` folder, such as `sourcecode/activemq/activemq-5.0.0/PDG`.
+PDG files are formatted as *.dot*. Then put the PDG file in the `sourcecode/[PROJECT]/[VERSION]/PDG/` folder, such as `sourcecode/activemq/activemq-5.0.0/PDG/`.
 
