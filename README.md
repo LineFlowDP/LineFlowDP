@@ -36,7 +36,9 @@ Put the downloaded dataset into `datasets/original/` folder, then run **"preproc
 
 ### Getting Java Source Files
 
-Run the **"Extract Java source code.py"** file to get the Java source code in csv files, the Java source code will be saved in the `sourcecode/` folder.
+Run the following command to get the Java source code in csv files, the Java source code will be saved in the `sourcecode/` folder.
+		
+		python Extract Java source code.py
 
 ### Extracting Program Dependency Graphs
 
@@ -44,16 +46,28 @@ We use the PropertyGraph tool to extract program dependency graphs (PDG) in this
 
 PDG files are formatted as *.dot*. Then put the PDG file in the `sourcecode/[PROJECT]/[VERSION]/PDG/` folder, such as `sourcecode/activemq/activemq-5.0.0/PDG/`.
 
-In the PDG file, it will contain data flow and control flow information, in order to refine the nodes and edges, run **"dot_to_txt.py"** to extract the information in the dot file, in which the information of the edges will be saved in `sourcecode/[PROJECT]/[VERSION]/[FILE_NAME]_pdg.txt`, to distinguish the data flow edges. and refined control flow edges will be saved in `sourcecode/[PROJECT]/[VERSION]/[FILE_NAME]_edge_label.txt`, and refined node types will be saved in a csv file in the `used_file_data` folder.
+In the PDG file, it will contain data flow and control flow information, in order to refine the nodes and edges, run the following command to extract the information in the dot file, in which the information of the edges will be saved in `sourcecode/[PROJECT]/[VERSION]/[FILE_NAME]_pdg.txt`, to distinguish the data flow edges and refined control flow edges will be saved in `sourcecode/[PROJECT]/[VERSION]/[FILE_NAME]_edge_label.txt`, and refined node types will be saved in a csv file in the `used_file_data` folder.
+
+		python dot_to_txt.py
 
 ### Flow Information Extension & Word Embedding
 
- - `Flow Information Extension`: Run **flow_information_extension.py** in the `do2vec` folder to get the lines of code after the flow information extension, and merge these statements into a corpus for the whole project for subsequent training of the do2vec model.
+ - `Flow Information Extension`: Run the command in the `do2vec` folder to get the lines of code after the flow information extension, and merge these statements into a corpus for the whole project for subsequent training of the do2vec model.
+ 
+		python flow_information_extension.py
+ 
  - `Word Embedding`:Run **train_doc2vec_model.py** in the `do2vec` folder to train the corresponding doc2vec model of the project and save it locally, and then run word **embedding.py** in the `do2vec` folder to get the word vectors of the utterances that have been expanded with the stream information and save it as a *.txt* file.
+ 
+		python train_doc2vec_model.py
+		python embedding.py
 
 ### Get the TUDataset raw file format
 
 In order to realize the training process afterwards, the data obtained after the above steps are needed to processing into a file in TUDataset raw format.
+
+Run the command to get the TUDataset raw files for software projects:
+
+		python TUDataset_raw.py
 
 TUDataset raw file will contain the following six files: DS_A, DS_edge_labels, DS_graph_indicator, DS_graph_labels, DS_node_attributes, DS_node_labels.
 
@@ -66,7 +80,9 @@ TUDataset raw file will contain the following six files: DS_A, DS_edge_labels, D
  
 And the TUDataset raw file will be stored in `sript/data/[PROJECT]/[VERSION]/raw/`.
  
-Then run **TUDataset_processed.py** to get the processed TUDataset data, it will contain "data.pt","pre_filter.pt" and "pre_transform.pt" three files.
+Then run **TUDataset_processed.py** to get the processed TUDataset data, it will contain `"data.pt"`,`"pre_filter.pt"` and `"pre_transform.pt"` three files.
+
+		python TUDataset_processed.py
 
 ## Training Graph Convolutional Network Model
 
