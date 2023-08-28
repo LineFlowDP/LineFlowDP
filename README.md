@@ -6,7 +6,18 @@ Preparation of "README.md" file referenced from DeepLineDP at this [github](http
   
 ## Environment Configuration
   
-The environment we used has been exported to the "environment.yaml" file, from which you can create the environment necessary to replicate the results of this paper.
+1. clone the github repository by using the following command:
+
+		git clone https://github.com/LineFlowDP/LineFlowDP.git
+
+2. download the dataset from this [github](https://github.com/awsm-research/line-level-defect-prediction) and keep it in `datasets/original/`
+
+3. use the following command to install required libraries in conda environment
+
+		conda env create -f requirements.yml
+		conda activate LineFlowDP_env
+
+4. install PyTorch library by following the instruction from this [link](https://pytorch.org/) (the installation instruction may vary based on OS and CUDA version)
   
 ## Datasets
 
@@ -33,6 +44,8 @@ For example, there are 5 releases in ActiveMQ (e.g., R1, R2, R3, R4, R5), R1 is 
 ### Data Preprocess
 
 Put the downloaded dataset into `datasets/original/` folder, then run **"preprocess_data.py"** to get the preprocessed data, the preprocessed data will be stored in `datasets/preprocessed_data/` folder.
+
+		python preprocess_data.py
 
 ### Getting Java Source Files
 
