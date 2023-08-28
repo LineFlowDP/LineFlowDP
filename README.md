@@ -51,7 +51,7 @@ Put the downloaded dataset into `datasets/original/` folder, then run **"preproc
 
 Run the following command to get the Java source code in csv files, the Java source code will be saved in the `sourcecode/` folder.
 		
-		python Extract Java source code.py
+		python extract_Java_source_code.py
 
 ### Extracting Program Dependency Graphs
 
