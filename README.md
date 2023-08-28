@@ -44,3 +44,33 @@ We use the PropertyGraph tool to extract program dependency graphs (PDG) in this
 
 PDG files are formatted as *.dot*. Then put the PDG file in the `sourcecode/[PROJECT]/[VERSION]/PDG/` folder, such as `sourcecode/activemq/activemq-5.0.0/PDG/`.
 
+In the PDG file, it will contain data flow and control flow information, in order to refine the nodes and edges, run **"dot_to_txt.py"** to extract the information in the dot file, in which the information of the edges will be saved in `sourcecode/[PROJECT]/[VERSION]/[FILE_NAME]_pdg.txt`, to distinguish the data flow edges. and refined control flow edges will be saved in `sourcecode/[PROJECT]/[VERSION]/[FILE_NAME]_edge_label.txt`, and refined node types will be saved in a csv file in the `used_file_data` folder.
+
+### Flow Information Extension & Word Embedding
+
+ - `Flow Information Extension`: Run **flow_information_extension.py** in the `do2vec` folder to get the lines of code after the flow information extension, and merge these statements into a corpus for the whole project for subsequent training of the do2vec model.
+ - `Word Embedding`:Run **train_doc2vec_model.py** in the `do2vec` folder to train the corresponding doc2vec model of the project and save it locally, and then run word **embedding.py** in the `do2vec` folder to get the word vectors of the utterances that have been expanded with the stream information and save it as a *.txt* file.
+
+### Get the TUDataset raw file format
+
+In order to realize the training process afterwards, the data obtained after the above steps are needed to processing into a file in TUDataset raw format.
+
+TUDataset raw file will contain the following six files: DS_A, DS_edge_labels, DS_graph_indicator, DS_graph_labels, DS_node_attributes, DS_node_labels.
+
+ - `DS_A`: The edges in the graphs. (The adjacency matrix of the graph.)
+ - `DS_edge_labels`: Indicating that the edge corresponds to the data flow edge or the refined control flow edge.
+ - `DS_graph_indicator`: Indicating which graph/file this edge corresponds to.
+ - `DS_graph_labels`: Indicating whether the graph/file has defects, 0 for no defects, 1 for defects.
+ - `DS_node_attributes`: Word vectors extracted from Doc2Vec model after Flow Information Extension.
+ - `DS_node_labels`: Indicating the type of node after refinement.
+ 
+And the TUDataset raw file will be stored in `sript/data/[PROJECT]/[VERSION]/raw/`.
+ 
+Then run **TUDataset_processed.py** to get the processed TUDataset data, it will contain "data.pt","pre_filter.pt" and "pre_transform.pt" three files.
+
+## Training Graph Convolutional Network Model
+
+The GCN model we used in our paper is referenced from this [paper](https://arxiv.org/abs/2011.04573) at this [github](https://github.com/flyingdoog/PGExplainer).
+
+
+
