@@ -97,7 +97,7 @@ Then run **TUDataset_processed.py** to get the processed TUDataset data, it will
 
 		python TUDataset_processed.py
 
-## Training Graph Convolutional Network Model
+## Training Relational Graph Convolutional Network Model
 
 To leverage the information in our refined program dependency graph, we constructed a Relational Graph Convolutional Network model.
 
