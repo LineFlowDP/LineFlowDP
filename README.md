@@ -99,7 +99,7 @@ Then run **TUDataset_processed.py** to get the processed TUDataset data, it will
 
 ## Training Graph Convolutional Network Model
 
-The GCN model we used in our paper is referenced from this [paper](https://arxiv.org/abs/2011.04573) at this [github](https://github.com/flyingdoog/PGExplainer).
+To leverage the information in our refined program dependency graph, we constructed a Relational Graph Convolutional Network model.
 
 
 
