@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import os
 import warnings
@@ -113,12 +114,22 @@ def toTUDA(line_data: pd.DataFrame, project, release, method='lineflow'):
 
 
 def main():
+    total_time = 0
+    count = 0
     for project in all_releases.keys():
         for release in all_releases[project]:
+            start_time = time.time()
             line_data = readData(used_file_data_path, release + '.csv')
             # toTUDA(line_data=line_data, project=project, release=release, method='lineflow')
             # toTUDA(line_data=line_data, project=project, release=release, method='linenoflow')
             toTUDA(line_data=line_data, project=project, release=release, method='noflow')
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            total_time += elapsed_time
+            count += 1
+            print(f"Project: {project}, Release: {release}, Time: {elapsed_time} seconds")
+    average_time = total_time / count
+    print(f"Average Time: {average_time} seconds")
 
 
 if __name__ == '__main__':

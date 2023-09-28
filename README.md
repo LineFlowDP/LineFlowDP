@@ -15,7 +15,7 @@ Preparation of "README.md" file referenced from DeepLineDP at this [github](http
 3. use the following command to install required libraries in conda environment
 
 		conda env create -f requirements.yml
-		conda activate LineFlowDP_env
+		conda activate LineFlowDP
 
 4. install PyTorch library by following the instruction from this [link](https://pytorch.org/) (the installation instruction may vary based on OS and CUDA version)
   
@@ -100,6 +100,8 @@ Then run **TUDataset_processed.py** to get the processed TUDataset data, it will
 ## Training Relational Graph Convolutional Network Model
 
 To leverage the information in our refined program dependency graph, we constructed a Relational Graph Convolutional Network model.
+
+**We will release the scripts and model we used later**
 
 
 

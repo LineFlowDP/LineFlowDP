@@ -1,3 +1,4 @@
+import time
 from my_util import *
 import os
 
@@ -30,10 +31,19 @@ def get_java_code(project, release):
 
 
 def main():
+    total_time = 0
+    count = 0
     for project in all_releases.keys():
         for release in all_releases[project]:
+            start_time = time.time()
             get_java_code(project=project, release=release)
-            print('-' * 50, release, '_done', '-' * 50)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            total_time += elapsed_time
+            count += 1
+            print(f"Project: {project}, Release: {release}, Time: {elapsed_time} seconds")
+    average_time = total_time / count
+    print(f"Average Time: {average_time} seconds")
 
 
 if __name__ == '__main__':

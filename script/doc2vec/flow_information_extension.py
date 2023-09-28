@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import warnings
 import glob
@@ -100,12 +101,21 @@ def combine_code_line(project, path):
 
 
 def main():
+    total_time = 0
+    count = 0
     for project in all_releases.keys():
         for release in all_releases[project]:
+            start_time = time.time()
             get_line_flow(project=project, release=release)
             path = '../doc2vec/corpus'
-            print('-' * 50, release, ' done', '-' * 50)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            total_time += elapsed_time
+            count += 1
+            print(f"Project: {project}, Release: {release}, Time: {elapsed_time} seconds")
     combine_code_line(project, path)
+    average_time = total_time / count
+    print(f"Average Time: {average_time} seconds")
 
 
 if __name__ == '__main__':

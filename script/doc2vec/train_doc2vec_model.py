@@ -1,4 +1,5 @@
 import os.path
+import time
 from script.my_util import *
 from gensim.models import Doc2Vec
 from gensim.models.doc2vec import TaggedDocument
@@ -71,9 +72,19 @@ def train_doc2vec(project, method='lineflow'):
 
 
 def main():
+    total_time = 0
+    count = 0
     for project in all_releases.keys():
+        start_time = time.time()
         train_doc2vec(project=project, method='noflow')
-        print('-' * 50, project + '_done', '-' * 50)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        total_time += elapsed_time
+        count += 1
+        print(f"Project: {project}, Time: {elapsed_time} seconds")
+
+    average_time = total_time / count
+    print(f"Average Time: {average_time} seconds")
 
 
 if __name__ == '__main__':
